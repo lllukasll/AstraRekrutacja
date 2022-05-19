@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    @Styles.Render("~/Content/cssjqryUi")
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Astrafox", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Urlopy", "Index", "Vacation", new { area = "" }, null)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - AstraFox</p>
+        </footer>
+    </div>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/popper")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryui")
+    <script type="text/javascript">
+    $(document).ready(function () {
+            loadStartDate = $('#start-input').val();
+            loadEndDate = $('#end-input').val();
+
+            $('#start-input').datepicker({
+                dateFormat: "dd/M/yy",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "-60:+0"
+            });
+
+            $('#start-input').change(function () {
+                startDate = $(this).datepicker('getDate');
+                $("#end-input").datepicker("option", "minDate", startDate);
+            })
+
+            $('#end-input').datepicker({
+                dateFormat: "dd/M/yy",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "-60:+0"
+            });
+
+            $('#end-input').change(function () {
+                endDate = $(this).datepicker('getDate');
+                $("#start-input").datepicker("option", "maxDate", endDate);
+            })
+
+            $('#export_btn').click(function (e) {
+                window.location.href = '@Url.Action("DownloadExcel", "Vacation")?start=' + loadStartDate + '&end=' + loadEndDate;
+            });
+
+        });
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            $("#sortTable").tablesorter({
+                theme: 'bootstrap',
+                headerTemplate: '{content} {icon}',
+                widgets: ['zebra', 'columns', 'uitheme'],
+                sortList: [[0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0]]
+            });
+        });
+    </script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,94 @@
+﻿@model AstraRekrutacja.Data.Models.WorkerVMTest
+@{
+    ViewBag.Title = "Urlopy";
+}
+
+<h2>Urlopy</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="form-inline mx-sm-0">
+        <div class="col-lg-9 mx-sm-0">
+            <div class="form-group mx-sm-0 mx-md-0 mb-2 col-12 col-lg-3">
+                @Html.TextBox("start", null, new { @id = "start-input", @type = "datetime", @class = "form-control col-12 col-lg-12 datepicker" })
+            </div>
+            <div class="form-group mx-sm-0 mx-md-0 mb-2 col-12 col-lg-3">
+                @Html.TextBox("end", null, new { @id = "end-input", @type = "datetime", @class = "form-control col-12 col-lg-12 datepicker" })
+            </div>
+
+            <div class="form-group mx-sm-0 mx-md-0 mb-2 col-12 col-lg-3">
+                <button type="submit" class="btn btn-light col-sm-12 col-lg-12">Wyszukaj</button>
+            </div>
+        </div>
+
+    </div>
+}
+
+<table id="sortTable" class="table tablesorter">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">
+                Worker Name
+            </th>
+            <th scope="col">
+                Manager Name
+            </th>
+            <th scope="col">
+                Vacation Start Date
+            </th>
+            <th scope="col">
+                Vacation End Date
+            </th>
+            <th scope="col">
+                Vacation Type
+            </th>
+            <th scope="col">
+                Vacation Status
+            </th>
+            <th scope="col">
+                Vacation Length (days)
+            </th>
+            <th scope="col">
+                Range
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model.WorkerLeavesResultViewModels)
+        {
+
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WorkerName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ManagerName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LeaveStartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LeaveEndDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LeaveTypeName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LeaveStatus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LeaveDays)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Range)
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+<div class="row mx-sm-3">
+    <button id="export_btn" type="button" class="btn btn-info col-sm-12 col-lg-2">Eksportuj</button>
+</div>
