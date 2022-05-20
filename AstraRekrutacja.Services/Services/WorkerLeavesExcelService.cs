@@ -1,9 +1,7 @@
-﻿using AstraRekrutacja.Services.Services.Interfaces;
+﻿using AstraRekrutacja.Data.Helpers;
+using AstraRekrutacja.Services.Services.Interfaces;
 using OfficeOpenXml;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace AstraRekrutacja.Services.Services
@@ -23,16 +21,16 @@ namespace AstraRekrutacja.Services.Services
 
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             ExcelPackage Ep = new ExcelPackage();
-            ExcelWorksheet Sheet = Ep.Workbook.Worksheets.Add("Worker Vacation");
+            ExcelWorksheet Sheet = Ep.Workbook.Worksheets.Add("Urlopy Pracowników");
 
-            Sheet.Cells["A1"].Value = "Worker";
-            Sheet.Cells["B1"].Value = "Manager";
-            Sheet.Cells["C1"].Value = "Vacation Start Date";
-            Sheet.Cells["D1"].Value = "Vacation End Date";
-            Sheet.Cells["E1"].Value = "Vacation Type";
-            Sheet.Cells["F1"].Value = "Vacation Status";
-            Sheet.Cells["G1"].Value = "Length";
-            Sheet.Cells["H1"].Value = "Range";
+            Sheet.Cells["A1"].Value = WorkerVacationTranslation.Worker;
+            Sheet.Cells["B1"].Value = WorkerVacationTranslation.Manager;
+            Sheet.Cells["C1"].Value = WorkerVacationTranslation.VacationStartDate;
+            Sheet.Cells["D1"].Value = WorkerVacationTranslation.VacationEndDate;
+            Sheet.Cells["E1"].Value = WorkerVacationTranslation.VacationType;
+            Sheet.Cells["F1"].Value = WorkerVacationTranslation.VacationStatus;
+            Sheet.Cells["G1"].Value = WorkerVacationTranslation.Length;
+            Sheet.Cells["H1"].Value = WorkerVacationTranslation.Range;
 
             int row = 2;
             foreach (var item in workerVacation)

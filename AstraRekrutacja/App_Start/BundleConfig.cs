@@ -9,7 +9,7 @@ namespace AstraRekrutacja
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js",
+                        "~/Scripts/jquery-3.6.0.js",
                         "~/Scripts/jquery.tablesorter.js",
                         "~/Scripts/jquery.tablesorter.widgets.js"));
 
@@ -27,15 +27,15 @@ namespace AstraRekrutacja
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new Bundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js"));
-
-            bundles.Add(new ScriptBundle("~/bundles/popper").Include(
-                      "~/Scripts/popper.js"));
+                      "~/Scripts/bootstrap.js",
+                      "~/Scripts/bootstrap.bundle.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/bootstrap-grid.css",
-                      "~/Content/site.css"));
+                      "~/Content/bootstrap-utilities.css",
+                      "~/Content/bootstrap-reboot.css",
+                      "~/Content/Site.css"));
         }
     }
 }

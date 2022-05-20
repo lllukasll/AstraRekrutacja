@@ -1,5 +1,4 @@
-﻿using AstraRekrutacja.Data.Models;
-using AstraRekrutacja.Services.Services.Interfaces;
+﻿using AstraRekrutacja.Services.Services.Interfaces;
 using System;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -22,17 +21,12 @@ namespace AstraRekrutacja.Controllers
             var StartDate = start ?? DateTime.MinValue;
             var EndDate = end ?? DateTime.MaxValue;
 
-            ViewBag.start = StartDate;
-            ViewBag.end = EndDate;
+            ViewBag.start = StartDate.ToString("MM/dd/yyyy");
+            ViewBag.end = EndDate.ToString("MM/dd/yyyy");
 
             var workerLeaves = await workerLeavesService.GetWorkerVacation(StartDate, EndDate);
 
-            var test = new WorkerVMTest
-            {
-                WorkerLeavesResultViewModels = workerLeaves
-            };
-
-            return View(test);
+            return View(workerLeaves);
         }
 
         public async Task DownloadExcel(DateTime? start, DateTime? end)

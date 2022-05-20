@@ -1,4 +1,4 @@
-﻿@model AstraRekrutacja.Data.Models.WorkerVMTest
+﻿@model IEnumerable<AstraRekrutacja.Data.Models.WorkerLeavesResultViewModel>
 @{
     ViewBag.Title = "Urlopy";
 }
@@ -7,17 +7,17 @@
 
 @using (Html.BeginForm())
 {
-    <div class="form-inline mx-sm-0">
-        <div class="col-lg-9 mx-sm-0">
-            <div class="form-group mx-sm-0 mx-md-0 mb-2 col-12 col-lg-3">
-                @Html.TextBox("start", null, new { @id = "start-input", @type = "datetime", @class = "form-control col-12 col-lg-12 datepicker" })
+    <div class="form">
+        <div class="row">
+            <div class="form-group mx-sm-0 mx-md-0 mb-2 col">
+                @Html.TextBox("start", null, new { @readonly = "readonly", @id = "start-input", @type = "datetime", @class = "form-control col-12 col-lg-12 datepicker" })
             </div>
-            <div class="form-group mx-sm-0 mx-md-0 mb-2 col-12 col-lg-3">
-                @Html.TextBox("end", null, new { @id = "end-input", @type = "datetime", @class = "form-control col-12 col-lg-12 datepicker" })
+            <div class="form-group mx-sm-0 mx-md-0 mb-2 col">
+                @Html.TextBox("end", null, new { @readonly = "readonly", @id = "end-input", @type = "datetime", @class = "form-control col-12 col-lg-12 datepicker" })
             </div>
 
-            <div class="form-group mx-sm-0 mx-md-0 mb-2 col-12 col-lg-3">
-                <button type="submit" class="btn btn-light col-sm-12 col-lg-12">Wyszukaj</button>
+            <div class="form-group mx-sm-0 mx-md-0 mb-2 col">
+                <button type="submit" class="btn btn-dark col-sm-12 col-lg-12">Wyszukaj</button>
             </div>
         </div>
 
@@ -28,34 +28,34 @@
     <thead class="thead-dark">
         <tr>
             <th scope="col">
-                Worker Name
+                Pracownik
             </th>
             <th scope="col">
-                Manager Name
+                Manager
             </th>
             <th scope="col">
-                Vacation Start Date
+                Start Urlopu
             </th>
             <th scope="col">
-                Vacation End Date
+                Koniec Urlopu
             </th>
             <th scope="col">
-                Vacation Type
+                Typ Urlopu
             </th>
             <th scope="col">
-                Vacation Status
+                Status Urlopu
             </th>
             <th scope="col">
-                Vacation Length (days)
+                Długość Urlopu (dni)
             </th>
             <th scope="col">
-                Range
+                Zakres
             </th>
         </tr>
     </thead>
 
     <tbody>
-        @foreach (var item in Model.WorkerLeavesResultViewModels)
+        @foreach (var item in Model)
         {
 
             <tr>

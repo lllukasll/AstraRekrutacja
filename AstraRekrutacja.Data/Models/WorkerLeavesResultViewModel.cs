@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AstraRekrutacja.Data.Models
+﻿namespace AstraRekrutacja.Data.Models
 {
     public class WorkerLeavesResultViewModel
     {
